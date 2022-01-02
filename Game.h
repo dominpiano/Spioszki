@@ -50,6 +50,7 @@ private:
 
 	//Colors
 	sf::Color WHITE = sf::Color::White;
+	sf::Color DEFAULT_RED = sf::Color::Red;
 	sf::Color RED = sf::Color(186, 45, 11);
 	sf::Color LIGHT_BLUE = sf::Color(213, 242, 227);
 	sf::Color LIGHT_GREEN = sf::Color(115, 203, 159);
@@ -57,9 +58,16 @@ private:
 	sf::Color LIGHT_BLACK = sf::Color(1, 17, 10);
 	sf::Color BLACK = sf::Color::Black;
 	sf::Color BLANK = sf::Color(0, 0, 0, 0);
+	//Players colors
+	sf::Color player1color = BLACK;
+	sf::Color player2color = DEFAULT_RED;
+
+	//Background Color
+	sf::Color bgColor = sf::Color(120, 120, 120);
 
 	//Color balls
-	ColorBall colorBall[10];
+	ColorBall colorBallSet1[5];
+	ColorBall colorBallSet2[5];
 	void initColorBalls();
 	void selectColorBall();
 

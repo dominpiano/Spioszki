@@ -79,6 +79,7 @@ Spioszek::~Spioszek() {
 }
 
 //Functions
+
 sf::CircleShape Spioszek::drawHead() {
 	head.setOrigin(sf::Vector2f(headRadius, headRadius));
 	head.setPosition(fineCoords(headCoords));

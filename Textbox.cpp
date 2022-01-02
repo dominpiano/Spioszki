@@ -8,7 +8,7 @@ Textbox::Textbox(int size, sf::Color color, bool sel) {
 	textbox.setCharacterSize(size);
 	textbox.setFillColor(color);
 	box.setFillColor(sf::Color(200, 200, 200));
-	box.setOutlineColor(sf::Color::Black);
+	box.setOutlineColor(color);
 	box.setOutlineThickness(1.5);
 	box.setSize(sf::Vector2f(300, 70));
 	isSelected = sel;
@@ -53,6 +53,11 @@ void Textbox::setSelected(bool sel) {
 }
 bool Textbox::getSelected() {
 	return isSelected;
+}
+
+void Textbox::setColor(sf::Color col) {
+	box.setOutlineColor(col);
+	textbox.setFillColor(col);
 }
 std::string Textbox::getText() {
 	return text.str();

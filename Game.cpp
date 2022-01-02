@@ -638,12 +638,12 @@ void Game::initText() {
 
 	username1display.setFont(fontMain);
 	username1display.setCharacterSize(36);
-	username1display.setFillColor(BLACK);
+	username1display.setFillColor(player1color);
 	username1display.setPosition(sf::Vector2f(100, 760));
 
 	username2display.setFont(fontMain);
 	username2display.setCharacterSize(36);
-	username2display.setFillColor(BLACK);
+	username2display.setFillColor(player2color);
 	username2display.setPosition(sf::Vector2f(400, 760));
 
 	RULES.setFont(fontMain);
@@ -675,39 +675,97 @@ void Game::initText() {
 void Game::initColorBalls() {
 	float x = 0;
 	float y = 0;
-	for (int i = 0; i < 10; i++) {
-		colorBall[i] = ColorBall();
-		if (i == 0 || i == 5) {
-			colorBall[i].setColor(1);
+	for (int i = 0; i < 5; i++) {
+		colorBallSet1[i] = ColorBall();
+		colorBallSet2[i] = ColorBall();
+		switch (i) {
+		case 0:
+			colorBallSet1[i].setColor(1);
+			colorBallSet2[i].setColor(1);
 			x = 350;
-		}
-		else if (i == 1 || i == 6) {
-			colorBall[i].setColor(2);
+			break;
+		case 1:
+			colorBallSet1[i].setColor(2);
+			colorBallSet2[i].setColor(2);
 			x = 410;
-		}
-		else if (i == 2 || i == 7) {
-			colorBall[i].setColor(3);
+			break;
+		case 2:
+			colorBallSet1[i].setColor(3);
+			colorBallSet2[i].setColor(3);
 			x = 470;
-		}
-		else if (i == 3 || i == 8) {
-			colorBall[i].setColor(4);
+			break;
+		case 3:
+			colorBallSet1[i].setColor(4);
+			colorBallSet2[i].setColor(4);
 			x = 530;
-		}
-		else if (i == 4 || i == 9) {
-			colorBall[i].setColor(5);
+			break;
+		case 4:
+			colorBallSet1[i].setColor(5);
+			colorBallSet2[i].setColor(5);
 			x = 590;
+			break;
 		}
-		if (i >= 0 && i <= 4) {
-			y = 580;
-		}
-		else if(i > 4 && i <= 9){
-			y = 740;
-		}
-		colorBall[i].setPosition(sf::Vector2f(x,  y));
+		colorBallSet1[i].setPosition(sf::Vector2f(x, 580));
+		colorBallSet2[i].setPosition(sf::Vector2f(x, 740));
 	}
 }
 void Game::selectColorBall() {
-
+	if (spioszekCount == 0) {
+		for (int x = 0; x < 5; x++) {
+			if (mousePos.x > 350 && mousePos.x < 650) { //To not declick if clicked elsewhere
+				if (mousePos.y >= 570 && mousePos.y < 650) { //Check if mouse is on the set1 or set2
+					if (colorBallSet1[x].contains(mousePos)) {
+						if (!colorBallSet2[x].getPermSelect()) {
+							colorBallSet1[x].setSelected(true);
+							if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+								colorBallSet1[x].setPermSelect(true);
+								player1color = colorBallSet1[x].getColor();
+								username1display.setFillColor(player1color);
+								usernameBox1.setColor(player1color);
+							}
+						}
+					}
+					else {
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+							colorBallSet1[x].setPermSelect(false);
+						}
+						if (!colorBallSet1[x].getPermSelect()) {
+							colorBallSet1[x].setSelected(false);
+						}
+					}
+				}
+				else if (mousePos.y >= 730 && mousePos.y <= 800) {
+					if (colorBallSet2[x].contains(mousePos)) {
+						if (!colorBallSet1[x].getPermSelect()) {
+							colorBallSet2[x].setSelected(true);
+							if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+								colorBallSet2[x].setPermSelect(true);
+								player2color = colorBallSet2[x].getColor();
+								username2display.setFillColor(player2color);
+								usernameBox2.setColor(player2color);
+							}
+						}
+					}
+					else {
+						if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
+							colorBallSet2[x].setPermSelect(false);
+						}
+						if (!colorBallSet2[x].getPermSelect()) {
+							colorBallSet2[x].setSelected(false);
+						}
+					}
+				}
+				else {
+					colorBallSet1[x].setSelected(false);
+					colorBallSet2[x].setSelected(false);
+				}
+			}
+			else {
+				colorBallSet1[x].setSelected(false);
+				colorBallSet2[x].setSelected(false);
+			}
+		}
+	}
 }
 void Game::initSound() {
 	wrongSpioszekBuff.loadFromFile("wrong_spioszek.wav");
@@ -719,13 +777,13 @@ void Game::initSound() {
 }
 void Game::initTextboxes() {
 	//Username Box 1
-	usernameBox1 = Textbox(48, BLACK, false);
+	usernameBox1 = Textbox(48, player1color, false);
 	usernameBox1.setFont(fontMain);
 	usernameBox1.setPosition(sf::Vector2f(350, 500));
 	usernameBox1.setLimit(true, 12);
 
 	//Username Box 2
-	usernameBox2 = Textbox(48, BLACK, false);
+	usernameBox2 = Textbox(48, player2color, false);
 	usernameBox2.setFont(fontMain);
 	usernameBox2.setPosition(sf::Vector2f(350, 660));
 	usernameBox2.setLimit(true, 12);
@@ -880,10 +938,10 @@ void Game::checkMouseHover() {
 							headHover->setFillColor(BLANK);
 							switch (playerDrawing) {
 							case 0:
-								headHover->setOutlineColor(BLACK);
+								headHover->setOutlineColor(player1color);
 								break;
 							case 1:
-								headHover->setOutlineColor(RED);
+								headHover->setOutlineColor(player2color);
 								break;
 							}
 							headHover->setOutlineThickness(1.5);
@@ -896,10 +954,10 @@ void Game::checkMouseHover() {
 						headHover->setFillColor(BLANK);
 						switch (playerDrawing) {
 						case 0:
-							headHover->setOutlineColor(BLACK);
+							headHover->setOutlineColor(player1color);
 							break;
 						case 1:
-							headHover->setOutlineColor(RED);
+							headHover->setOutlineColor(player2color);
 							break;
 						}
 						headHover->setOutlineThickness(1.5);
@@ -925,11 +983,11 @@ void Game::checkMousePress() {
 		else {
 			switch (playerDrawing) {
 			case 0:
-				spioszki[spioszekCount - 1] = Spioszek(roundCoords(mousePos), BLACK); //First player in game, draw BLACK
+				spioszki[spioszekCount - 1] = Spioszek(roundCoords(mousePos), player1color); //First player in game, draw BLACK
 				pointMadeSound.play();
 				break;
 			case 1:
-				spioszki[spioszekCount - 1] = Spioszek(roundCoords(mousePos), RED); //Second player in game, draw RED
+				spioszki[spioszekCount - 1] = Spioszek(roundCoords(mousePos), player2color); //Second player in game, draw RED
 				pointMadeSound.play();
 			}
 			spioszki[spioszekCount - 1].drawHead();
@@ -1185,6 +1243,7 @@ void Game::frameUpdate() {
 		updateMousePosition();
 		checkBoxSelection();
 		checkButtonClick();
+		selectColorBall();
 	}
 	if (screenRules) {
 		pollEvents();
@@ -1217,7 +1276,7 @@ void Game::frameUpdate() {
 
 void Game::render() {
 	if (screen1) {
-		window->clear(WHITE);
+		window->clear(bgColor);
 		this->window->draw(LOGO);
 		this->window->draw(welcomeText);
 		usernameBox1.drawTo(*window);
@@ -1226,21 +1285,33 @@ void Game::render() {
 		this->window->draw(username2);
 		buttonStart.drawTo(*window);
 		buttonRules.drawTo(*window);
-		for (int i = 0; i < 10; i++) {
-			colorBall[i].drawTo(*window);
+		for (int i = 0; i < 5; i++) {
+			if (colorBallSet1[i].getSelected() || colorBallSet1[i].getPermSelect()) {
+				colorBallSet1[i].drawSelectedTo(*window);
+			}
+			else {
+				colorBallSet1[i].drawTo(*window);
+			}
+
+			if (colorBallSet2[i].getSelected() || colorBallSet2[i].getPermSelect()) {
+				colorBallSet2[i].drawSelectedTo(*window);
+			}
+			else {
+				colorBallSet2[i].drawTo(*window);
+			}
 		}
 
 		window->display();
 	}
 	if (screenRules) {
-		window->clear(WHITE);
+		window->clear(bgColor);
 		this->window->draw(RULES);
 		this->window->draw(rulesText);
 		buttonBack.drawTo(*window);
 		window->display();
 	}
 	if (screenGame) {
-		this->window->clear(WHITE);
+		this->window->clear(bgColor);
 		//Logo of Spioszki
 		this->window->draw(LOGO);
 		
@@ -1272,7 +1343,7 @@ void Game::render() {
 			if (elapsed2.asMilliseconds() - elapsed1.asMilliseconds() < 300 ||
 				(elapsed2.asMilliseconds() - elapsed1.asMilliseconds() > 600 && elapsed2.asMilliseconds() - elapsed1.asMilliseconds() < 900) ||
 				(elapsed2.asMilliseconds() - elapsed1.asMilliseconds() > 1200 && elapsed2.asMilliseconds() - elapsed1.asMilliseconds() < 1500)) {
-				this->window->clear(WHITE);
+				this->window->clear(bgColor);
 				this->window->draw(gameOverText);
 
 				//Texts
@@ -1292,7 +1363,7 @@ void Game::render() {
 			this->window->display();
 		}
 		else if (elapsed2.asSeconds() - elapsed1.asSeconds() > 2) {
-			this->window->clear(WHITE);
+			this->window->clear(bgColor);
 			for (int i = 0; i < 6; i++) {
 				for (int j = 0; j < 6; j++) {
 					window->draw(points[i][j]);
@@ -1313,7 +1384,6 @@ void Game::render() {
 			this->window->display();
 		}
 	}
-
 }
 
 
