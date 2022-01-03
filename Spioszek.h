@@ -10,6 +10,8 @@ private:
 	sf::Vector2f lineSize;
 	float lineLenght;
 	float lineThic = 4.f;
+	int lineAngle;
+	int getDir(sf::Vector2i v1, sf::Vector2i v2);
 public:
 	sf::Vector2i headCoords, firstLineCoords, secondLineCoords, thirdLineCoords;
 	sf::CircleShape head;

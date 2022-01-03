@@ -17,4 +17,3 @@ public:
 	sf::Vector2i getSize();
 	void drawTo(sf::RenderWindow& window);
 };
-

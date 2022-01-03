@@ -1,7 +1,70 @@
-﻿  Textbox.cpp
+﻿  Game.cpp
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(549,30): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(549,22): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(605,36): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(605,24): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+          with
+          [
+              T=unsigned int
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(606,24): warning C4305: "argument": obcięcie z "double" do "float"
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(619,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(659,21): warning C4129: "L": nierozpoznany znak sekwencji ucieczki
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(659,21): warning C4129: "P": nierozpoznany znak sekwencji ucieczki
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(823,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(825,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(829,53): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+  Spioszek.cpp
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(5,48): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(5,33): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(97,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(118,25): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(139,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Spioszki.cpp
   Trwa generowanie kodu
-  0 of 552 functions ( 0.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(41): warning C4715: "Spioszek::getDir”: niewszystkie ścieżki kodu zwracają wartość
+  18 of 551 functions ( 3.3%) were compiled, the rest were copied from previous compilation.
+    1 functions were new in current compilation
+    3 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Spioszki.vcxproj -> C:\Users\dominpiano\Desktop\C++\Spioszki\x64\Release\Spioszki.exe

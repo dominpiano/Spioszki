@@ -100,6 +100,9 @@ void Textbox::textTyped(sf::Event input) {
 				inputLogic(charTyped);
 			}
 		}
+		else if (charTyped == ENTER_KEY) {
+			setSelected(false);
+		}
 	}
 }
 sf::Vector2f Textbox::getBoxPosition() {

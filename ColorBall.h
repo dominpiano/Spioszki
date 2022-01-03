@@ -29,4 +29,3 @@ public:
 	sf::Vector2f getPosition();
 	sf::Color getColor();
 };
-

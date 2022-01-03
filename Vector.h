@@ -8,8 +8,6 @@ public:
 
 	//Overload operators
 	Vector operator+(int add);
-	Vector operator*(int mult);
 	friend bool operator==(Vector &v1, Vector &v2);
 	Vector mirrorVec();
 };
-

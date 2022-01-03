@@ -655,10 +655,11 @@ void Game::initText() {
 	rulesText.setFont(fontRules);
 	rulesText.setCharacterSize(25);
 	rulesText.setFillColor(BLACK);
-	rulesText.setPosition(sf::Vector2f(50, 120));
-	sf::String rules = L"W grze trzeba na przemian umieszczać na planszy tytułowe śpioszki. Kto w swojej turze nie będzie w stanie umieścić już żadnej nowej figury – przegrywa. \nW swojej turze gracz rysuje śpioszka: Główka to kropka pola gry otoczona kółkiem, tułów to linia złożona z trzech odcinków – rozpoczynająca się od głowy i łącząca trzy kolejne kropki planszy. O czym trzeba koniecznie pamiętać w trakcie gry? Śpioszki rysujemy tylko na jeszcze wolnych punktach planszy. Żaden śpioszek nie może dotykać innego. Główki śpioszków nie mogą sąsiadować ani w pionie, ani w poziomie. Co ponadto? Każda figura śpioszka może wystąpić w grze tylko jeden raz. Nieważne, czy będziemy chcieli ułożyć tę figurę w innym kierunku (obróconą wedle osi głowy) czy wykorzystać jej lustrzane odbicie – tego nam nie wolno. \n\n\nKontrola: \Lewy Przycisk Myszy - rysowanie śpioszka \Prawy Przycisk Myszy - anulowanie aktualnie rysowanego śpioszka \n";
+	rulesText.setPosition(sf::Vector2f(30, 120));
+	sf::String rules = L"Główny cel jest bardzo prosty: w grze trzeba na przemian umieszczać na planszy tytułowe śpioszki. Kto w swojej turze nie będzie w stanie umieścić już żadnej nowej figury – przegrywa. \nW swojej turze gracz rysuje śpioszka: Główka to kropka pola gry otoczona kółkiem, tułów to linia złożona z trzech odcinków – rozpoczynająca się od głowy i łącząca trzy kolejne kropki planszy. O czym trzeba koniecznie pamiętać w trakcie gry? Śpioszki rysujemy tylko na jeszcze wolnych punktach planszy. Żaden śpioszek nie może dotykać innego. Główki śpioszków nie mogą sąsiadować ani w pionie, ani w poziomie. Co ponadto? Każda figura śpioszka może wystąpić w grze tylko jeden raz. Nieważne, czy będziemy chcieli ułożyć tę figurę w innym kierunku (obróconą wedle osi głowy) czy wykorzystać jej lustrzane odbicie – tego nam nie wolno. \n\n\nKontrola: \Lewy Przycisk Myszy - rysowanie śpioszka \Prawy Przycisk Myszy - anulowanie aktualnie rysowanego śpioszka \n";
 	sf::String append;
 	int counter = 0;
+	//This was only to do the fucking carriage return
 	for (auto& i : rules) {
 		append += i;
 		counter++;

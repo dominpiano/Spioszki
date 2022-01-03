@@ -8,6 +8,7 @@
 
 #define BACKSPACE_KEY 8
 #define TAB_KEY 9
+#define ENTER_KEY 13
 
 class Textbox{
 private:
@@ -40,4 +41,3 @@ public:
 	sf::Vector2f getBoxPosition();
 	sf::Vector2f getBoxSize();
 };
-
