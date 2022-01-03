@@ -63,7 +63,7 @@ private:
 	sf::Color player2color = DEFAULT_RED;
 
 	//Background Color
-	sf::Color bgColor = sf::Color(120, 120, 120);
+	sf::Color bgColor = sf::Color(150, 145, 140);
 
 	//Color balls
 	ColorBall colorBallSet1[5];

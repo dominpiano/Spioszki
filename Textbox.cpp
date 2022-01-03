@@ -38,7 +38,12 @@ void Textbox::setLimit(bool hasLim, int lim) {
 void Textbox::setSelected(bool sel) {
 	isSelected = sel;
 	if (!sel) {
-		box.setFillColor(sf::Color(200, 200, 200));
+		if (color == sf::Color(213, 242, 227) || color == sf::Color(115, 203, 159)) {
+			box.setFillColor(sf::Color(50, 50, 50));
+		}
+		else {
+			box.setFillColor(sf::Color(200, 200, 200));
+		}
 		std::string str = text.str();
 		std::string newStr = "";
 		for (int i = 0; i < str.length(); i++) {
@@ -47,7 +52,12 @@ void Textbox::setSelected(bool sel) {
 		textbox.setString(newStr);
 	}
 	else {
-		box.setFillColor(sf::Color(230, 230, 230));
+		if (color == sf::Color(213, 242, 227) || color == sf::Color(115, 203, 159)) {
+			box.setFillColor(sf::Color(80, 80, 80));
+		}
+		else {
+			box.setFillColor(sf::Color(230, 230, 230));
+		}
 		textbox.setString(text.str() + "_");
 	}
 }
@@ -56,8 +66,15 @@ bool Textbox::getSelected() {
 }
 
 void Textbox::setColor(sf::Color col) {
-	box.setOutlineColor(col);
-	textbox.setFillColor(col);
+	color = col;
+	box.setOutlineColor(color);
+	textbox.setFillColor(color);
+	if (color == sf::Color(213, 242, 227) || color == sf::Color(115, 203, 159)) {
+		box.setFillColor(sf::Color(50, 50, 50));
+	}
+	else {
+		box.setFillColor(sf::Color(200, 200, 200));
+	}
 }
 std::string Textbox::getText() {
 	return text.str();

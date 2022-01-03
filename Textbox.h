@@ -13,6 +13,7 @@ class Textbox{
 private:
 	sf::Text textbox;
 	std::ostringstream text;
+	sf::Color color;
 
 	//Box for text
 	sf::RectangleShape box;
