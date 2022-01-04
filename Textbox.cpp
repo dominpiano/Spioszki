@@ -20,10 +20,6 @@ Textbox::Textbox(int size, sf::Color color, bool sel) {
 	}
 }
 
-Textbox::~Textbox(){
-
-}
-
 //Public functions
 void Textbox::setFont(sf::Font& font) {
 	textbox.setFont(font);

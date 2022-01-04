@@ -38,9 +38,12 @@ C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(829,53): warning C4244: "argum
           [
               T=float
           ]
+  Spioszki.cpp
+  Textbox.cpp
   Trwa generowanie kodu
-  45 of 562 functions ( 8.0%) were compiled, the rest were copied from previous compilation.
-    14 functions were new in current compilation
-    16 functions had inline decision re-evaluated but remain unchanged
+  Compiler switch has changed, fall back to full compilation.
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(41): warning C4715: "Spioszek::getDir”: niewszystkie ścieżki kodu zwracają wartość
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(94): warning C4715: "Game::determineLineCode”: niewszystkie ścieżki kodu zwracają wartość
+  All 572 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
   Zakończono generowanie kodu
   Spioszki.vcxproj -> C:\Users\dominpiano\Desktop\C++\Spioszki\x64\Release\Spioszki.exe
