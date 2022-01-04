@@ -8,15 +8,16 @@
 
 class ColorBall {
 private:
-	bool isSelected;
-	bool isPermSelected;
-	sf::Color ballColor;
+	bool isSelected = false;
+	bool isPermSelected = false;
+	sf::Color ballColor = {};
 	sf::Texture ballTexture;
 	sf::Texture selectedBallTexture;
 	sf::Sprite ballSprite;
 	sf::Sprite selectedBallSprite;
 public:
 	ColorBall();
+	virtual ~ColorBall();
 	void setColor(int color);
 	void setPosition(sf::Vector2f pos);
 	void setSelected(bool sel);

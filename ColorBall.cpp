@@ -4,6 +4,10 @@ ColorBall::ColorBall() {
 	
 }
 
+ColorBall::~ColorBall(){
+	
+}
+
 void ColorBall::setColor(int color){
 	switch (color) {
 	case 1:

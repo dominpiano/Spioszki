@@ -4,6 +4,10 @@ Button::Button() {
 
 }
 
+Button::~Button(){
+	//Well, do nothing
+}
+
 void Button::setTexture(std::string path) {
 	texture.loadFromFile(path);
 	buttonSprite.setTexture(texture);

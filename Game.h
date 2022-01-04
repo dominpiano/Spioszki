@@ -16,8 +16,6 @@
 #include "Button.h"
 #include "ColorBall.h"
 
-using namespace std;
-
 class Game{
 private:
 
@@ -30,15 +28,15 @@ private:
 	int user1Points = 0;
 	int user2Points = 0;
 	//Which player is drawing
-	int playerDrawing;
+	int playerDrawing = 0;
 	sf::CircleShape* headHover;
 	sf::Event event;
 
 	//Screens
-	bool screen1, screenRules, screenGame, screenEnd;
+	bool screen1, screenRules, screenGame, screenEnd = {};
 
 	//Usernames
-	std::string username1string, username2string;
+	std::string username1string, username2string = {};
 
 	//Objects
 	sf::CircleShape	points[6][6];
@@ -46,7 +44,7 @@ private:
 
 	//Time
 	sf::Clock clock;
-	sf::Time elapsed1, elapsed2;
+	sf::Time elapsed1, elapsed2 = {};
 
 	//Colors
 	sf::Color WHITE = sf::Color::White;
@@ -112,7 +110,7 @@ private:
 	void checkButtonClick();
 
 	//Map for point assign
-	std::map<std::pair<int, int>, sf::Vector2i> pointAssign;
+	std::map<std::pair<int, int>, sf::Vector2i> pointAssign = {};
 
 	//Functions
 	void initWindow();
@@ -121,7 +119,7 @@ private:
 	void updateMousePosition();
 
 	//Game logic variables
-	sf::Vector2i mousePos;
+	sf::Vector2i mousePos = {};
 
 	//Game logic functions
 	void checkMouseHover();
@@ -145,7 +143,7 @@ public:
 
 	//Constructors
 	Game();
-	~Game();
+	virtual ~Game();
 
 	//Getters Accessors
 	const bool isWindowOpen();

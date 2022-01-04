@@ -11,13 +11,13 @@
 #define rightup sf::Vector2i(100,-100)
 
 //Overload some operators
-ostream& operator<<(ostream& out, const sf::Vector2i v) {
+std::ostream& operator<<(std::ostream& out, const sf::Vector2i v) {
 	//out << "[" << (v.x - 100) / 100 + 1 << ", " << (v.y - 200) / 100 + 1 << "]";
 	out << "[" << (v.x) << ", " << (v.y - 100) << "]";
 	//out << "[" << v.x << ", " << v.y << "]";
 	return out;
 }
-ostream& operator<<(ostream& out, const sf::Vector2f v) {
+std::ostream& operator<<(std::ostream& out, const sf::Vector2f v) {
 	//out << "[" << (v.x - 100) / 100 + 1 << ", " << (v.y - 200) / 100 + 1 << "]";
 	out << "[" << (v.x) << ", " << (v.y - 100) << "]";
 	//out << "[" << v.x << ", " << v.y << "]";
@@ -27,7 +27,7 @@ sf::Vector2i operator+(sf::Vector2i v1, sf::Vector2i v2) {
 	return sf::Vector2i(v1.x + v2.x, v1.y + v2.y);
 }
 
-std::vector<sf::Vector2i> directions = { right, rightdown, down, leftdown, left, leftup, up, rightup };
+const std::vector<sf::Vector2i> directions = { right, rightdown, down, leftdown, left, leftup, up, rightup };
 
 //Global help variables
 bool isDrawing = false;
@@ -142,8 +142,8 @@ std::pair<int, int> getPair(sf::Vector2i v) {
 	return std::pair<int, int>(v.x, v.y);
 }
 
-map<pair<int, int>, sf::Vector2i>::iterator iter1;
-map<pair<int, int>, sf::Vector2i>::iterator iter2;
+std::map<std::pair<int, int>, sf::Vector2i>::iterator iter1;
+std::map<std::pair<int, int>, sf::Vector2i>::iterator iter2;
 
 bool Game::isCrossing() {
 
@@ -842,8 +842,8 @@ void Game::checkButtonClick() {
 					if (username2string == "") {
 						username2string = "Anonymous";
 					}
-					username1display.setString(username1string + ": " + to_string(user1Points));
-					username2display.setString(username2string + ": " + to_string(user2Points));
+					username1display.setString(username1string + ": " + std::to_string(user1Points));
+					username2display.setString(username2string + ": " + std::to_string(user2Points));
 
 					screen1 = false;
 					screenGame = true;
@@ -1502,8 +1502,8 @@ void Game::checkIfWin() {
 			user2Points++;
 			playerDrawing = 1;
 		}
-		username1display.setString(username1string + ": " + to_string(user1Points));
-		username2display.setString(username2string + ": " + to_string(user2Points));
+		username1display.setString(username1string + ": " + std::to_string(user1Points));
+		username2display.setString(username2string + ": " + std::to_string(user2Points));
 		isPossible = false;
 		coordinatesForWinningCheck.clear();
 		coordinatesForWinningCheckLine.clear();

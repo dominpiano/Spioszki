@@ -11,6 +11,7 @@ public:
 	sf::Sprite buttonSprite;
 
 	Button();
+	virtual ~Button();
 	void setTexture(std::string path);
 	void setPosition(sf::Vector2f pos);
 	sf::Vector2f getPosition();

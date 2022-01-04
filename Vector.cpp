@@ -10,6 +10,10 @@ Vector::Vector(int a, int b, int c) {
 	this->z = c;
 }
 
+Vector::~Vector(){
+
+}
+
 //Overload operators
 Vector Vector::operator+(int add) {
 	Vector ans;
