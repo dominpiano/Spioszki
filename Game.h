@@ -3,6 +3,7 @@
 //STD Classes
 #include <iostream>
 #include <map>
+#include <fstream>
 #include <SFML/Graphics.hpp>
 #include <SFML/System.hpp>
 #include <SFML/Window.hpp>
@@ -25,15 +26,15 @@ private:
 	int firstPointX = 100;
 	int firstPointY = 200;
 	int spioszekCount = 0;
-	int user1Points = 0;
-	int user2Points = 0;
+	int player1Points = 0;
+	int player2Points = 0;
 	//Which player is drawing
 	int playerDrawing = 0;
 	sf::CircleShape* headHover;
 	sf::Event event;
 
 	//Screens
-	bool screen1, screenRules, screenGame, screenEnd = {};
+	bool screen1, screenRules, screenLeaderboard, screenGame, screenEnd = {};
 
 	//Usernames
 	std::string username1string, username2string = {};
@@ -41,6 +42,12 @@ private:
 	//Objects
 	sf::CircleShape	points[6][6];
 	Spioszek spioszki[9];
+
+	//Files
+	std::ofstream fileLeaderboardWrite;
+	std::ifstream fileLeaderboardRead;
+	sf::String scores = "";
+	int lineCount = 1;
 
 	//Time
 	sf::Clock clock;
@@ -83,7 +90,7 @@ private:
 	void initFont();
 
 	//Texts
-	sf::Text gameOverText, welcomeText, username1, username2, username1display, username2display, RULES, rulesText;
+	sf::Text gameOverText, welcomeText, username1, username2, username1display, username2display, RULES, rulesText, playerScores, leaderboardText;
 	void initText();
 
 	//Sound buffs and sounds
@@ -106,6 +113,7 @@ private:
 	Button buttonRules;
 	Button buttonBack;
 	Button buttonPlayAgain;
+	Button buttonLeaderboard;
 	void initButtons();
 	void checkButtonClick();
 
@@ -129,6 +137,9 @@ private:
 	bool isCrossing();
 	bool isCrossingAtWin(Spioszek checking);
 	void checkIfWin();
+	void saveScore();
+	void getScore();
+	void getLines();
 
 	//Help functions
 	int determineLineCode(sf::Vector2i a, sf::Vector2i b);

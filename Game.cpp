@@ -583,11 +583,12 @@ void Game::initVars() {
 	isDrawing = false;
 	playerDrawing = 0;
 	spioszekCount = 0;
-	user1Points = 0;
-	user2Points = 0;
+	player1Points = 0;
+	player2Points = 0;
 	screenRules, screenGame, screenEnd = false;
 	screen1 = true;
 	icon.loadFromFile("icon.png");
+	getScore();
 
 	//Forbidden shapes:
 	addToList(Vector(2, 5, 8));
@@ -672,6 +673,17 @@ void Game::initText() {
 		}
 	}
 	rulesText.setString(append);
+
+	leaderboardText.setFont(fontRules);
+	leaderboardText.setCharacterSize(50);
+	leaderboardText.setFillColor(BLACK);
+	leaderboardText.setString(L"Najwyższe wyniki: ");
+	leaderboardText.setPosition(sf::Vector2f(170, 20));
+
+	playerScores.setFont(fontRules);
+	playerScores.setCharacterSize(25);
+	playerScores.setFillColor(BLACK);
+	playerScores.setPosition(sf::Vector2f(30, 120));
 }
 void Game::initColorBalls() {
 	float x = 0;
@@ -822,11 +834,13 @@ void Game::initButtons() {
 	buttonStart.setTexture("buttonStart.png");
 	buttonStart.setPosition(sf::Vector2f(WIDTH / 2 - 150, 820));
 	buttonRules.setTexture("buttonRules.png");
-	buttonRules.setPosition(sf::Vector2f(WIDTH / 2 - 100, 350));
+	buttonRules.setPosition(sf::Vector2f(WIDTH / 2 - 230, 350));
 	buttonBack.setTexture("buttonBack.png");
 	buttonBack.setPosition(sf::Vector2f(20, 20));
 	buttonPlayAgain.setTexture("buttonPlayAgain.png");
 	buttonPlayAgain.setPosition(sf::Vector2f(WIDTH / 2 - 150, 820));
+	buttonLeaderboard.setTexture("buttonLeaderboard.png");
+	buttonLeaderboard.setPosition(sf::Vector2f(WIDTH / 2 + 30, 350));
 }
 void Game::checkButtonClick() {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -842,8 +856,8 @@ void Game::checkButtonClick() {
 					if (username2string == "") {
 						username2string = "Anonymous";
 					}
-					username1display.setString(username1string + ": " + std::to_string(user1Points));
-					username2display.setString(username2string + ": " + std::to_string(user2Points));
+					username1display.setString(username1string + ": " + std::to_string(player1Points));
+					username2display.setString(username2string + ": " + std::to_string(player2Points));
 
 					screen1 = false;
 					screenGame = true;
@@ -879,6 +893,16 @@ void Game::checkButtonClick() {
 			}
 		}
 
+		//Check for button back in Leaderboard
+		if (screenLeaderboard) {
+			if (mousePos.x > buttonBack.getPosition().x && mousePos.x < buttonBack.getPosition().x + buttonBack.getSize().x) {
+				if (mousePos.y > buttonBack.getPosition().y && mousePos.y < buttonBack.getPosition().y + buttonBack.getSize().y) {
+					screenLeaderboard = false;
+					screen1 = true;
+				}
+			}
+		}
+
 		//Check for button Play Again
 		if (screenEnd) {
 			if (mousePos.x > buttonPlayAgain.getPosition().x && mousePos.x < buttonPlayAgain.getPosition().x + buttonPlayAgain.getSize().x) {
@@ -894,6 +918,16 @@ void Game::checkButtonClick() {
 					existingShapes.clear();
 					//Forbidden shapes:
 					addToList(Vector(2, 5, 8));
+				}
+			}
+		}
+
+		//Check for button Leaderboard
+		if (screen1) {
+			if (mousePos.x > buttonLeaderboard.getPosition().x && mousePos.x < buttonLeaderboard.getPosition().x + buttonLeaderboard.getSize().x) {
+				if (mousePos.y > buttonLeaderboard.getPosition().y && mousePos.y < buttonLeaderboard.getPosition().y + buttonLeaderboard.getSize().y) {
+					screen1 = false;
+					screenLeaderboard = true;
 				}
 			}
 		}
@@ -1185,6 +1219,7 @@ void Game::pollEvents() {
 	while (this->window->pollEvent(event)) {
 		switch (event.type) {
 		case sf::Event::Closed:
+			saveScore();
 			window->close();
 			break;
 		case sf::Event::KeyPressed:
@@ -1210,13 +1245,13 @@ void Game::pollEvents() {
 			//		screenEnd = true;
 			//		elapsed1 = clock.getElapsedTime();
 			//		if (playerDrawing == 0) {
-			//			user1Points++;
+			//			player1Points++;
 			//		}
 			//		else if (playerDrawing == 1) {
-			//			user2Points++;
+			//			player2Points++;
 			//		}
-			//		username1display.setString(username1string + ": " + to_string(user1Points));
-			//		username2display.setString(username2string + ": " + to_string(user2Points));
+			//		username1display.setString(username1string + ": " + to_string(player1Points));
+			//		username2display.setString(username2string + ": " + to_string(player2Points));
 			//	}
 			//}
 			break;
@@ -1247,6 +1282,11 @@ void Game::frameUpdate() {
 		selectColorBall();
 	}
 	if (screenRules) {
+		pollEvents();
+		updateMousePosition();
+		checkButtonClick();
+	}
+	if (screenLeaderboard) {
 		pollEvents();
 		updateMousePosition();
 		checkButtonClick();
@@ -1286,6 +1326,7 @@ void Game::render() {
 		this->window->draw(username2);
 		buttonStart.drawTo(*window);
 		buttonRules.drawTo(*window);
+		buttonLeaderboard.drawTo(*window);
 		for (int i = 0; i < 5; i++) {
 			if (colorBallSet1[i].getSelected() || colorBallSet1[i].getPermSelect()) {
 				colorBallSet1[i].drawSelectedTo(*window);
@@ -1308,6 +1349,14 @@ void Game::render() {
 		window->clear(bgColor);
 		this->window->draw(RULES);
 		this->window->draw(rulesText);
+		buttonBack.drawTo(*window);
+		window->display();
+	}
+	if (screenLeaderboard) {
+		window->clear(bgColor);
+		//List of the best people after closing an app is getting bigger and bigger
+		this->window->draw(playerScores);
+		this->window->draw(leaderboardText);
 		buttonBack.drawTo(*window);
 		window->display();
 	}
@@ -1387,7 +1436,44 @@ void Game::render() {
 	}
 }
 
+//Here is function to save scores
+void Game::saveScore() {
+	if (player1Points != 0 || player2Points != 0) {
+		getLines();
+		if (player1Points > player2Points) {
+			fileLeaderboardWrite.open("leaderboard.dat", std::ios::out | std::ios::app);
+			fileLeaderboardWrite << lineCount << ". " << username1string << " - " << player1Points << " pkt" << std::endl;
+		}
+		else {
+			fileLeaderboardWrite.open("leaderboard.dat", std::ios::out | std::ios::app);
+			fileLeaderboardWrite << lineCount << ". " << username2string << " - " << player2Points << " pkt" << std::endl;
+		}
+		fileLeaderboardWrite.close();
+	}
+}
 
+void Game::getScore() {
+	fileLeaderboardRead.open("leaderboard.dat", std::ios::in);
+	std::string line = "";
+	if (fileLeaderboardRead.is_open()) {
+		while (std::getline(fileLeaderboardRead, line)) {
+			scores += line + "\n";
+		}
+		fileLeaderboardRead.close();
+	}
+	playerScores.setString(scores);
+}
+
+void Game::getLines() {
+	fileLeaderboardRead.open("leaderboard.dat", std::ios::in);
+	std::string line = "";
+	if (fileLeaderboardRead.is_open()) {
+		while (std::getline(fileLeaderboardRead, line)) {
+			lineCount++;
+		}
+		fileLeaderboardRead.close();
+	}
+}
 
 
 
@@ -1495,15 +1581,15 @@ void Game::checkIfWin() {
 		screenEnd = true;
 		elapsed1 = clock.getElapsedTime();
 		if (playerDrawing == 0) {
-			user1Points++;
+			player1Points++;
 			playerDrawing = 0;
 		}
 		else if (playerDrawing == 1) {
-			user2Points++;
+			player2Points++;
 			playerDrawing = 1;
 		}
-		username1display.setString(username1string + ": " + std::to_string(user1Points));
-		username2display.setString(username2string + ": " + std::to_string(user2Points));
+		username1display.setString(username1string + ": " + std::to_string(player1Points));
+		username2display.setString(username2string + ": " + std::to_string(player2Points));
 		isPossible = false;
 		coordinatesForWinningCheck.clear();
 		coordinatesForWinningCheckLine.clear();

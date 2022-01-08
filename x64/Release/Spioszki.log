@@ -9,41 +9,43 @@ C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(549,22): warning C4244: "argum
           [
               T=int
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(605,36): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(606,36): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
           with
           [
               T=unsigned int
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(605,24): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(606,24): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
           with
           [
               T=unsigned int
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(606,24): warning C4305: "argument": obcięcie z "double" do "float"
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(619,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(659,21): warning C4129: "L": nierozpoznany znak sekwencji ucieczki
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(659,21): warning C4129: "P": nierozpoznany znak sekwencji ucieczki
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(823,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(607,24): warning C4305: "argument": obcięcie z "double" do "float"
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(620,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(660,21): warning C4129: "L": nierozpoznany znak sekwencji ucieczki
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(660,21): warning C4129: "P": nierozpoznany znak sekwencji ucieczki
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(835,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(825,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(837,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(829,53): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(841,53): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-  Spioszki.cpp
-  Textbox.cpp
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(843,55): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
   Trwa generowanie kodu
-  Compiler switch has changed, fall back to full compilation.
-C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(41): warning C4715: "Spioszek::getDir”: niewszystkie ścieżki kodu zwracają wartość
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(94): warning C4715: "Game::determineLineCode”: niewszystkie ścieżki kodu zwracają wartość
-  All 572 functions were compiled because no usable IPDB/IOBJ from previous compilation was found.
+  39 of 655 functions ( 6.0%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    12 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Spioszki.vcxproj -> C:\Users\dominpiano\Desktop\C++\Spioszki\x64\Release\Spioszki.exe
