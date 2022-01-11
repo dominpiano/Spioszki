@@ -21,8 +21,8 @@ class Game{
 private:
 
 	//Variables
-	const int WIDTH = 700;
-	const int HEIGHT = 950;
+	int WIDTH; //700
+	int HEIGHT; //950
 	int firstPointX = 100;
 	int firstPointY = 200;
 	int spioszekCount = 0;
@@ -142,6 +142,7 @@ private:
 	void getLines();
 
 	//Help functions
+	sf::Vector2i roundCoords(sf::Vector2i coords);
 	int determineLineCode(sf::Vector2i a, sf::Vector2i b);
 	Vector createShape(int a, int b, int c);
 	void addToList(Vector shapeToAdd);

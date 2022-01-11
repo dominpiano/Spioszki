@@ -11,28 +11,28 @@ ColorBall::~ColorBall(){
 void ColorBall::setColor(int color){
 	switch (color) {
 	case 1:
-		ballTexture.loadFromFile("red_ball.png");
-		selectedBallTexture.loadFromFile("red_ball_selected.png");
+		ballTexture.loadFromFile("resources/red_ball.png");
+		selectedBallTexture.loadFromFile("resources/red_ball_selected.png");
 		ballColor = sf::Color(186, 45, 11);
 		break;
 	case 2:
-		ballTexture.loadFromFile("light_blue_ball.png");
-		selectedBallTexture.loadFromFile("light_blue_ball_selected.png");
+		ballTexture.loadFromFile("resources/light_blue_ball.png");
+		selectedBallTexture.loadFromFile("resources/light_blue_ball_selected.png");
 		ballColor = sf::Color(213, 242, 227);
 		break;
 	case 3:
-		ballTexture.loadFromFile("light_green_ball.png");
-		selectedBallTexture.loadFromFile("light_green_ball_selected.png");
+		ballTexture.loadFromFile("resources/light_green_ball.png");
+		selectedBallTexture.loadFromFile("resources/light_green_ball_selected.png");
 		ballColor = sf::Color(115, 203, 159);
 		break;
 	case 4:
-		ballTexture.loadFromFile("green_ball.png");
-		selectedBallTexture.loadFromFile("green_ball_selected.png");
+		ballTexture.loadFromFile("resources/green_ball.png");
+		selectedBallTexture.loadFromFile("resources/green_ball_selected.png");
 		ballColor = sf::Color(0, 62, 31);
 		break;
 	case 5:
-		ballTexture.loadFromFile("black_ball.png");
-		selectedBallTexture.loadFromFile("black_ball_selected.png");
+		ballTexture.loadFromFile("resources/black_ball.png");
+		selectedBallTexture.loadFromFile("resources/black_ball_selected.png");
 		ballColor = sf::Color(1, 17, 10);
 		break;
 	}

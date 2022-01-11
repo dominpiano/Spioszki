@@ -1,51 +1,113 @@
-﻿  Game.cpp
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(549,30): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+﻿  Button.cpp
+C:\Users\dominpiano\Desktop\C++\Spioszki\Button.cpp(25,90): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Button.cpp(25,52): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=float
+          ]
+          and
+          [
+              T=int
+          ]
+  ColorBall.cpp
+C:\Users\dominpiano\Desktop\C++\Spioszki\ColorBall.cpp(67,60): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(549,22): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+          and
+          [
+              T=float
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\ColorBall.cpp(67,50): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
           with
           [
               T=int
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(606,36): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+          and
+          [
+              T=float
+          ]
+  Game.cpp
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(552,30): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(552,22): warning C4244: "argument": konwersja z "float" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(612,36): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
           with
           [
               T=unsigned int
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(606,24): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(612,24): warning C4244: "argument": konwersja z "T" do "float", możliwa utrata danych
           with
           [
               T=unsigned int
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(607,24): warning C4305: "argument": obcięcie z "double" do "float"
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(620,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(660,21): warning C4129: "L": nierozpoznany znak sekwencji ucieczki
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(660,21): warning C4129: "P": nierozpoznany znak sekwencji ucieczki
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(835,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(613,24): warning C4305: "argument": obcięcie z "double" do "float"
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(626,33): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(666,21): warning C4129: "L": nierozpoznany znak sekwencji ucieczki
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(666,21): warning C4129: "P": nierozpoznany znak sekwencji ucieczki
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(841,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(837,49): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(844,50): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(841,53): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(850,54): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
-C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(843,55): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Game.cpp(853,56): warning C4244: "argument": konwersja z "int" do "T", możliwa utrata danych
           with
           [
               T=float
           ]
+  Spioszek.cpp
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(5,48): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(5,33): warning C4244: "argument": konwersja z "T" do "T", możliwa utrata danych
+          with
+          [
+              T=int
+          ]
+          and
+          [
+              T=float
+          ]
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(97,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(118,25): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(139,24): warning C4244: "argument": konwersja z "int" do "float", możliwa utrata danych
+  Spioszki.cpp
   Trwa generowanie kodu
-  39 of 655 functions ( 6.0%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    12 functions had inline decision re-evaluated but remain unchanged
+C:\Users\dominpiano\Desktop\C++\Spioszki\Spioszek.cpp(41): warning C4715: "Spioszek::getDir”: niewszystkie ścieżki kodu zwracają wartość
+  50 of 655 functions ( 7.6%) were compiled, the rest were copied from previous compilation.
+    4 functions were new in current compilation
+    45 functions had inline decision re-evaluated but remain unchanged
   Zakończono generowanie kodu
   Spioszki.vcxproj -> C:\Users\dominpiano\Desktop\C++\Spioszki\x64\Release\Spioszki.exe

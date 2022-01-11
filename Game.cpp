@@ -1,6 +1,9 @@
 ﻿#include "Game.h"
 #include <map>
 
+//GLOBAL NOTE
+//I HAD TO ADD EVERYWHERE "" TO MAKE IT RESPONSIVE TO EVERY SCREEN
+
 #define right sf::Vector2i(100,0)
 #define rightdown sf::Vector2i(100,100)
 #define down sf::Vector2i(0,100)
@@ -543,9 +546,9 @@ bool Game::isCrossingAtWin(Spioszek checking) {
 }
 
 //Global help functions
-sf::Vector2i roundCoords(sf::Vector2i coords) {
-	roundX = (round(coords.x / 100.f)) * 100.f; //first divide by 100 to get sth like 1.01, 0.96 then round it up to closest whole
-	roundY = (round(coords.y / 100.f)) * 100.f; //number, and then multiply by 100 to get even 100's num
+sf::Vector2i Game::roundCoords(sf::Vector2i coords) {
+	roundX = (round(coords.x / (100.f))) * 100.f; //first divide by 100 to get sth like 1.01, 0.96 then round it up to closest whole
+	roundY = (round(coords.y / (100.f))) * 100.f; //number, and then multiply by 100 to get even 100's num
 	return sf::Vector2i(roundX, roundY);
 }
 
@@ -587,19 +590,22 @@ void Game::initVars() {
 	player2Points = 0;
 	screenRules, screenGame, screenEnd = false;
 	screen1 = true;
-	icon.loadFromFile("icon.png");
+	icon.loadFromFile("resources/icon.png");
 	getScore();
 
 	//Forbidden shapes:
 	addToList(Vector(2, 5, 8));
 }
 void Game::initWindow() {
+	WIDTH = (int)(sf::VideoMode::getDesktopMode().width * 0.365); //700
+	HEIGHT = (int)(sf::VideoMode::getDesktopMode().height * 0.88); //950
+	//std::cout << scale << std::endl;
 	window = new sf::RenderWindow(sf::VideoMode(WIDTH, HEIGHT), "Spioszki", sf::Style::Titlebar | sf::Style::Close, sf::ContextSettings::ContextSettings(0, 0, 10, 2, 0));
 	window->setIcon(icon.getSize().x, icon.getSize().y, icon.getPixelsPtr());
 	window->setFramerateLimit(30);
 }
 void Game::initLogo() {
-	logoTexture.loadFromFile("spioszki_logo.png");
+	logoTexture.loadFromFile("resources/spioszki_logo.png");
 	logoTexture.setSmooth(true);
 	LOGO = sf::Sprite(logoTexture);
 	sf::Vector2u size = logoTexture.getSize();
@@ -608,8 +614,8 @@ void Game::initLogo() {
 	LOGO.setPosition(WIDTH / 2.f, 80.f);
 }
 void Game::initFont() {
-	fontMain.loadFromFile("harringt.otf");
-	fontRules.loadFromFile("CaviarDreams.ttf");
+	fontMain.loadFromFile("resources/harringt.otf");
+	fontRules.loadFromFile("resources/CaviarDreams.ttf");
 }
 void Game::initText() {
 	gameOverText.setFont(fontMain);
@@ -623,40 +629,40 @@ void Game::initText() {
 	welcomeText.setCharacterSize(40);
 	welcomeText.setFillColor(BLACK);
 	welcomeText.setString(L"		   Witaj w grze Śpioszki!\nWybierzcie nicki i zaczynamy zabawę!");
-	welcomeText.setPosition(sf::Vector2f(60, 200));
+	welcomeText.setPosition(60, 200);
 
 	username1.setFont(fontMain);
 	username1.setCharacterSize(36);
 	username1.setFillColor(BLACK);
 	username1.setString("Nick gracza nr 1");
-	username1.setPosition(sf::Vector2f(50, 510));
+	username1.setPosition(50, 510);
 
 	username2.setFont(fontMain);
 	username2.setCharacterSize(36);
 	username2.setFillColor(BLACK);
 	username2.setString("Nick gracza nr 2");
-	username2.setPosition(sf::Vector2f(50, 670));
+	username2.setPosition(50, 670);
 
 	username1display.setFont(fontMain);
 	username1display.setCharacterSize(36);
 	username1display.setFillColor(player1color);
-	username1display.setPosition(sf::Vector2f(100, 760));
+	username1display.setPosition(100, 760);
 
 	username2display.setFont(fontMain);
 	username2display.setCharacterSize(36);
 	username2display.setFillColor(player2color);
-	username2display.setPosition(sf::Vector2f(400, 760));
+	username2display.setPosition(400, 760);
 
 	RULES.setFont(fontMain);
 	RULES.setCharacterSize(69);
 	RULES.setFillColor(BLACK);
 	RULES.setString("ZASADY");
-	RULES.setPosition(sf::Vector2f(230, 20));
+	RULES.setPosition(230, 20);
 
 	rulesText.setFont(fontRules);
 	rulesText.setCharacterSize(25);
 	rulesText.setFillColor(BLACK);
-	rulesText.setPosition(sf::Vector2f(30, 120));
+	rulesText.setPosition(30, 120);
 	sf::String rules = L"Główny cel jest bardzo prosty: w grze trzeba na przemian umieszczać na planszy tytułowe śpioszki. Kto w swojej turze nie będzie w stanie umieścić już żadnej nowej figury – przegrywa. \nW swojej turze gracz rysuje śpioszka: Główka to kropka pola gry otoczona kółkiem, tułów to linia złożona z trzech odcinków – rozpoczynająca się od głowy i łącząca trzy kolejne kropki planszy. O czym trzeba koniecznie pamiętać w trakcie gry? Śpioszki rysujemy tylko na jeszcze wolnych punktach planszy. Żaden śpioszek nie może dotykać innego. Główki śpioszków nie mogą sąsiadować ani w pionie, ani w poziomie. Co ponadto? Każda figura śpioszka może wystąpić w grze tylko jeden raz. Nieważne, czy będziemy chcieli ułożyć tę figurę w innym kierunku (obróconą wedle osi głowy) czy wykorzystać jej lustrzane odbicie – tego nam nie wolno. \n\n\nKontrola: \Lewy Przycisk Myszy - rysowanie śpioszka \Prawy Przycisk Myszy - anulowanie aktualnie rysowanego śpioszka \n";
 	sf::String append;
 	int counter = 0;
@@ -678,12 +684,12 @@ void Game::initText() {
 	leaderboardText.setCharacterSize(50);
 	leaderboardText.setFillColor(BLACK);
 	leaderboardText.setString(L"Najwyższe wyniki: ");
-	leaderboardText.setPosition(sf::Vector2f(170, 20));
+	leaderboardText.setPosition(170, 20);
 
 	playerScores.setFont(fontRules);
 	playerScores.setCharacterSize(25);
 	playerScores.setFillColor(BLACK);
-	playerScores.setPosition(sf::Vector2f(30, 120));
+	playerScores.setPosition(30, 120);
 }
 void Game::initColorBalls() {
 	float x = 0;
@@ -781,11 +787,11 @@ void Game::selectColorBall() {
 	}
 }
 void Game::initSound() {
-	wrongSpioszekBuff.loadFromFile("wrong_spioszek.wav");
+	wrongSpioszekBuff.loadFromFile("resources/wrong_spioszek.wav");
 	wrongSpioszekSound.setBuffer(wrongSpioszekBuff);
-	pointMadeBuff.loadFromFile("point_made.wav");
+	pointMadeBuff.loadFromFile("resources/point_made.wav");
 	pointMadeSound.setBuffer(pointMadeBuff);
-	gameOverBuff.loadFromFile("game_over.wav");
+	gameOverBuff.loadFromFile("resources/game_over.wav");
 	gameOverSound.setBuffer(gameOverBuff);
 }
 void Game::initTextboxes() {
@@ -831,16 +837,20 @@ void Game::checkBoxSelection() {
 	}
 }
 void Game::initButtons() {
-	buttonStart.setTexture("buttonStart.png");
-	buttonStart.setPosition(sf::Vector2f(WIDTH / 2 - 150, 820));
-	buttonRules.setTexture("buttonRules.png");
-	buttonRules.setPosition(sf::Vector2f(WIDTH / 2 - 230, 350));
-	buttonBack.setTexture("buttonBack.png");
+	buttonStart.setTexture("resources/buttonStart.png");
+	buttonStart.setPosition(sf::Vector2f((WIDTH / 2 - 150), 820));
+
+	buttonRules.setTexture("resources/buttonRules.png");
+	buttonRules.setPosition(sf::Vector2f((WIDTH / 2 - 230), 350));
+
+	buttonBack.setTexture("resources/buttonBack.png");
 	buttonBack.setPosition(sf::Vector2f(20, 20));
-	buttonPlayAgain.setTexture("buttonPlayAgain.png");
-	buttonPlayAgain.setPosition(sf::Vector2f(WIDTH / 2 - 150, 820));
-	buttonLeaderboard.setTexture("buttonLeaderboard.png");
-	buttonLeaderboard.setPosition(sf::Vector2f(WIDTH / 2 + 30, 350));
+
+	buttonPlayAgain.setTexture("resources/buttonPlayAgain.png");
+	buttonPlayAgain.setPosition(sf::Vector2f((WIDTH / 2 - 150), 820));
+
+	buttonLeaderboard.setTexture("resources/buttonLeaderboard.png");
+	buttonLeaderboard.setPosition(sf::Vector2f((WIDTH / 2 + 30), 350));
 }
 void Game::checkButtonClick() {
 	if (sf::Mouse::isButtonPressed(sf::Mouse::Left)) {
@@ -938,7 +948,7 @@ void Game::initPoints() {
 		for (int j = 0; j < 6; j++) {
 			points[i][j].setRadius(5.f);
 			points[i][j].setFillColor(BLACK);
-			points[i][j].setPosition(firstPointX - 5.f + j * 100.f, firstPointY - 5.f + i * 100.f);
+			points[i][j].setPosition((firstPointX - 5.f + j * 100.f), (firstPointY - 5.f + i * 100.f));
 		}
 	}
 }
@@ -952,9 +962,9 @@ void Game::checkMouseHover() {
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 6; j++) {
 			//checking if mouse is in X range <-15, 15> from center of the circle
-			if (mousePos.x > firstPointX - tempRad + j * 100.f && mousePos.x < firstPointX + tempRad + j * 100.f) {
+			if (mousePos.x > (firstPointX - tempRad + j * 100.f) && mousePos.x < (firstPointX + tempRad + j * 100.f)) {
 				//checking if mouse is in Y range <-15, 15> from center of the circle
-				if (mousePos.y > firstPointY - tempRad + i * 100.f && mousePos.y < firstPointY + tempRad + i * 100.f) {
+				if (mousePos.y > (firstPointY - tempRad + i * 100.f) && mousePos.y < (firstPointY + tempRad + i * 100.f)) {
 
 					if (spioszekCount != 0) {
 						for (int x = 0; x < spioszekCount; x++) {
@@ -980,7 +990,7 @@ void Game::checkMouseHover() {
 								break;
 							}
 							headHover->setOutlineThickness(1.5);
-							headHover->setPosition(firstPointX - tempRad + j * 100.f, firstPointY - tempRad + i * 100.f);
+							headHover->setPosition((firstPointX - tempRad + j * 100.f), (firstPointY - tempRad + i * 100.f));
 							checkMousePress();
 						}
 					}
@@ -996,7 +1006,7 @@ void Game::checkMouseHover() {
 							break;
 						}
 						headHover->setOutlineThickness(1.5);
-						headHover->setPosition(firstPointX - tempRad + j * 100.f, firstPointY - tempRad + i * 100.f);
+						headHover->setPosition((firstPointX - tempRad + j * 100.f), (firstPointY - tempRad + i * 100.f));
 						checkMousePress();
 					}
 					coordinatesForHead.clear();
@@ -1037,9 +1047,9 @@ void Game::drawingStage() {
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 6; j++) {
 			//checking if mouse is in X range <-15, 15> from center of the circle
-			if (mousePos.x > firstPointX - tempRad + j * 100.f && mousePos.x < firstPointX + tempRad + j * 100.f && !sf::Mouse::isButtonPressed(sf::Mouse::Right)) { //Without mouse control bugs happened
+			if (mousePos.x > (firstPointX - tempRad + j * 100.f) && mousePos.x < (firstPointX + tempRad + j * 100.f) && !sf::Mouse::isButtonPressed(sf::Mouse::Right)) { //Without mouse control bugs happened
 				//checking if mouse is in Y range <-15, 15> from center of the circle
-				if (mousePos.y > firstPointY - tempRad + i * 100.f && mousePos.y < firstPointY + tempRad + i * 100.f) {
+				if (mousePos.y > (firstPointY - tempRad + i * 100.f) && mousePos.y < (firstPointY + tempRad + i * 100.f)) {
 
 					//Check if just drawn Spioszek doesn't crush into another Spioszek
 					for (int x = 0; x < spioszekCount; x++) {
@@ -1508,7 +1518,7 @@ void Game::checkIfWin() {
 
 	for (int i = 0; i < 6; i++) {
 		for (int j = 0; j < 6; j++) {
-			sf::Vector2i point = sf::Vector2i(firstPointX + j * 100, firstPointY + i * 100);
+			sf::Vector2i point = sf::Vector2i((firstPointX + j * 100), (firstPointY + i * 100));
 			//If point isn't the head or isn't right by the head or isn't a line
 			marker1 = point;
 			if (isAvailableHead(marker1)) {
